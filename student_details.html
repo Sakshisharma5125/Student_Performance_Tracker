@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <p>Name: {{ student.name }}</p>
+    <p>Roll No: {{ student.roll_number }}</p>
+    <h2>Grades</h2>
+    <ul>
+        {% for subject, grade in student.grades.items() %}
+            <li>{{ subject }}: {{ grade }}</li>
+        {% endfor %}
+    </ul>
+    <p>Average Grade: {{ student.calculate_average() }}</p>
+    <a href="/">Back to Students List</a>
+</body>
+</html>

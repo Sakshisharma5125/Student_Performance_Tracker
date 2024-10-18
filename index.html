@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Tracker</title>
+</head>
+<body>
+    <h1>Student Performance Tracker</h1>
+    <h2>Add Student</h2>
+    <form method="POST" action="/add_student">
+        <input type="text" name="name" placeholder="Student Name" required>
+        <input type="text" name="roll_number" placeholder="Roll Number" required>
+        <button type="submit">Add Student</button>
+    </form>
+    <h2>Students List</h2>
+    <ul>
+        {% for roll, student in students.items() %}
+            <li>
+                {{ student.name }} (Roll No: {{ roll }}) 
+                <form method="POST" action="/add_grade/{{ roll }}">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <input type="number" name="grade" placeholder="Grade" required min="0" max="100">
+                    <button type="submit">Add Grade</button>
+                </form>
+                <a href="/student/{{ roll }}">View Details</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
